@@ -9,7 +9,7 @@ import  FreeFormCanvas from './views/freeformcanvas/FreeFormCanvas';
 @observer
 class Root extends React.Component<any, any>{
     componentDidMount(): void {
-        let numNodes = 5;
+        let numNodes = 2;
         let maxX = 400;
         let maxY = 400;
         for (let i = 0; i < numNodes; i++) {
@@ -22,7 +22,7 @@ class Root extends React.Component<any, any>{
             });
         }
 
-        for (let i = 0; i < 0; i++) {
+        for (let i = 0; i < numNodes; i++) {
             this.props.publicStore.addNodes({
                 type:'video',
                 x: Math.random() * maxX,

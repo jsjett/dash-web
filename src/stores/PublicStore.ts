@@ -1,11 +1,11 @@
 import {observable,action} from 'mobx'
-import {NodeType} from "../Utils/interface";
+import {NodeType} from "../types/interface";
 
 export class PublicStore {
     @observable
     public nodes:NodeType[] = [];
 
-    // 添加你node
+    // 添加node
     @action
     public addNodes(node:NodeType){
         this.nodes.push(node)

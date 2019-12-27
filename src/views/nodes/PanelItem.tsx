@@ -2,7 +2,7 @@ import "./NodeView.scss";
 import TopBar from "./TopBar";
 import "./panel-item.scss";
 import React = require("react");
-import {NodeType} from "../../Utils/interface";
+import {NodeType} from "../../types/interface";
 import {observer} from 'mobx-react'
 import Editor from "../editor/Editor"
 import BraftEditor from 'braft-editor'

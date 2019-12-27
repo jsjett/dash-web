@@ -1,7 +1,7 @@
 
 import "./NodeView.scss";
 import React = require("react");
-import {NodeType} from "../../Utils/interface";
+import {NodeType} from "../../types/interface";
 import {inject,observer} from 'mobx-react'
 import {PublicStore} from "../../stores/PublicStore";
 
@@ -25,7 +25,7 @@ export default class TopBar extends React.Component<IProps, any>{
         }
     }
 
-    onMouseDown = (e): void => {
+    onPointerDown = (e): void => {
         // 获取x坐标和y坐标
         const x = e.clientX;
         const y = e.clientY;
@@ -43,14 +43,14 @@ export default class TopBar extends React.Component<IProps, any>{
         })
     }
     componentWillUnmount(): void {
-        window.removeEventListener("mousemove",this.onmousemove);
+        window.removeEventListener("pointermove",this.onPointMove);
     }
 
     componentDidMount(): void {
-        window.addEventListener("mousemove",this.onmousemove)
+        window.addEventListener("pointermove",this.onPointMove)
     }
 
-    onmousemove = (e): void => {
+    onPointMove = (e): void => {
         const {node} = this.props;
         if (this.state.isDown === false) {
             return;
@@ -66,7 +66,7 @@ export default class TopBar extends React.Component<IProps, any>{
         node.y = nt;
     }
 
-    onMouseUp = (e): void => {
+    onPointerUp = (e): void => {
         this.setState({isDown: false})
     }
 
@@ -76,9 +76,9 @@ export default class TopBar extends React.Component<IProps, any>{
     
     render() {
         return (
-            <div className="top" onMouseDown={this.onMouseDown}
-                 onMouseUp={this.onMouseUp}>
-               <span style={{ color:"#c09" }} onClick={this.handleRemove}>ssss</span>
+            <div className="top" onPointerDown={this.onPointerDown}
+            onPointerUp={this.onPointerUp}>
+               <span style={{ color:"#c09",float:"right" }} onClick={this.handleRemove}>X</span>
             </div>
         );
     }
