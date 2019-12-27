@@ -1,12 +1,12 @@
 
 import "./NodeView.scss";
 import React = require("react");
-import {NodeType} from "../../types/interface";
+import {NodeObject} from "../../stores/NodeObject";
 import {inject,observer} from 'mobx-react'
 import {PublicStore} from "../../stores/PublicStore";
 
 interface IProps {
-    node: NodeType;
+    node: NodeObject;
     publicStore?:PublicStore
 }
 
@@ -47,6 +47,7 @@ export default class TopBar extends React.Component<IProps, any>{
     }
 
     componentDidMount(): void {
+        console.log(this.props.node)
         window.addEventListener("pointermove",this.onPointMove)
     }
 
@@ -64,6 +65,7 @@ export default class TopBar extends React.Component<IProps, any>{
         const nt = ny - (y - t);
         node.x = nl;
         node.y = nt;
+        // node.zIndex+=2;
     }
 
     onPointerUp = (e): void => {
@@ -78,7 +80,7 @@ export default class TopBar extends React.Component<IProps, any>{
         return (
             <div className="top" onPointerDown={this.onPointerDown}
             onPointerUp={this.onPointerUp}>
-               <span style={{ color:"#c09",float:"right" }} onClick={this.handleRemove}>X</span>
+               <span style={{ color:"#c09",float:"right"}} onClick={this.handleRemove}>X</span>
             </div>
         );
     }

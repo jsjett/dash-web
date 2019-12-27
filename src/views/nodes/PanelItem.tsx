@@ -2,13 +2,13 @@ import "./NodeView.scss";
 import TopBar from "./TopBar";
 import "./panel-item.scss";
 import React = require("react");
-import {NodeType} from "../../types/interface";
+import {NodeObject} from "../../stores/NodeObject";
 import {observer} from 'mobx-react'
 import Editor from "../editor/Editor"
 import BraftEditor from 'braft-editor'
 
 interface IProps {
-    node: NodeType;
+    node: NodeObject;
 }
 
 @observer
@@ -17,7 +17,7 @@ export default class VideoNodeView extends React.Component<IProps, any> {
 
 
     render() {
-        const node: NodeType = this.props.node;
+        const node: NodeObject = this.props.node;
         return (
             <div className="node text-node"
                  style={{left: node.x, top: node.y}}>

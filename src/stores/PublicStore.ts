@@ -1,19 +1,19 @@
 import {observable,action} from 'mobx'
-import {NodeType} from "../types/interface";
+import {NodeObject} from "./NodeObject";
 
 export class PublicStore {
     @observable
-    public nodes:NodeType[] = [];
+    public nodes:NodeObject[] = [];
 
     // 添加node
     @action
-    public addNodes(node:NodeType){
+    public addNodes(node:NodeObject){
         this.nodes.push(node)
     }
 
     // 删除node
     @action
-    public removeNode(node:NodeType){
+    public removeNode(node:NodeObject){
         const index:number = this.nodes.indexOf(node);
         this.nodes.splice(index,1);
     }
