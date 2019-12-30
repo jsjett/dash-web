@@ -1,17 +1,11 @@
 .node {
     background: #cdcdcd;
-
     width: 300px;
     height: 300px;
     overflow: hidden;
     position: absolute;
     left: 0;
     top: 0;
-        
-    &.minimized {
-        width: 30px;
-        height: 30px;
-    }
 
     .top {
         background: #232323;
@@ -19,16 +13,27 @@
         cursor: pointer;
     }
 
+    .scroll-box {
+        width: 100%;
+        height: calc(100% - 20px);
+        position: relative;
+        overflow: auto;
+    }
+
     .content {
         padding: 20px 20px;
         height: auto;
         box-sizing: border-box;
-
     }
 
-    .scroll-box {
-        overflow-y: scroll;
-        height: calc(100% - 20px);
+    .scale{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 10px; 
+        height: 10px; 
+        cursor: se-resize; 
+
     }
 }
 

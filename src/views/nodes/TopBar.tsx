@@ -2,7 +2,7 @@
 import "./NodeView.scss";
 import React = require("react");
 import {NodeType} from "../../types/interface";
-import {inject,observer} from 'mobx-react';
+import {inject,observer} from 'mobx-react'
 import {PublicStore} from "../../stores/PublicStore";
 
 interface IProps {
@@ -26,6 +26,8 @@ export default class TopBar extends React.Component<IProps, any>{
     }
 
     onPointerDown = (e): void => {
+        e.stopPropagation();
+        e.preventDefault();
         // 获取x坐标和y坐标
         const x = e.clientX;
         const y = e.clientY;
@@ -43,12 +45,13 @@ export default class TopBar extends React.Component<IProps, any>{
         })
     }
     componentWillUnmount(): void {
-        window.removeEventListener("pointermove",this.onPointMove);
+        window.addEventListener("mouseup",this.onPointerUp)
+        window.removeEventListener("mousemove",this.onPointMove);
     }
 
     componentDidMount(): void {
-        console.log(this.props.node)
-        window.addEventListener("pointermove",this.onPointMove)
+        window.addEventListener("mouseup",this.onPointerUp)
+        window.addEventListener("mousemove",this.onPointMove)
     }
 
     onPointMove = (e): void => {
@@ -78,8 +81,7 @@ export default class TopBar extends React.Component<IProps, any>{
     
     render() {
         return (
-            <div className="top" onPointerDown={this.onPointerDown}
-            onPointerUp={this.onPointerUp}>
+            <div className="top" onMouseDown={this.onPointerDown}>
                <span style={{ color:"#c09",float:"right"}} onClick={this.handleRemove}>X</span>
             </div>
         );
