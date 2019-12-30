@@ -6,4 +6,7 @@ export interface NodeType {
     zIndex: number;
     text?: string | null;
     url?: string | null;
+    width?:number
+    height?:number,
+    changeSize?:any
 }
