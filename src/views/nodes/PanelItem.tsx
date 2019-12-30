@@ -4,8 +4,6 @@ import "./panel-item.scss";
 import React = require("react");
 import {NodeObject} from "../../stores/NodeObject";
 import {observer} from 'mobx-react'
-import Editor from "../editor/Editor"
-import BraftEditor from 'braft-editor'
 
 interface IProps {
     node: NodeObject;
@@ -18,6 +16,7 @@ export default class VideoNodeView extends React.Component<IProps, any> {
 
     render() {
         const node: NodeObject = this.props.node;
+        // @ts-ignore
         return (
             <div className="node text-node"
                  style={{left: node.x, top: node.y}}>
@@ -27,10 +26,10 @@ export default class VideoNodeView extends React.Component<IProps, any> {
                         <h3 className="title">{node.title}</h3>
                         {
                             node.type === 'text' ? (
-                                <Editor editorState={
-                                    BraftEditor.createEditorState(node.text)
-                                }/>
-                                // <p className="paragraph">{node.text}</p>
+                                <div className="paragraph"
+                                     spellCheck="false"
+                                     dangerouslySetInnerHTML={{__html:node.text}}
+                                     contentEditable="true" />
                             ) : (
                                 <video src={String(node.url)} controls/>
                             )
