@@ -1,12 +1,12 @@
 
 import "./NodeView.scss";
 import React = require("react");
-import {NodeObject} from "../../stores/NodeObject";
-import {inject,observer} from 'mobx-react'
+import {NodeType} from "../../types/interface";
+import {inject,observer} from 'mobx-react';
 import {PublicStore} from "../../stores/PublicStore";
 
 interface IProps {
-    node: NodeObject;
+    node: NodeType;
     publicStore?:PublicStore
 }
 

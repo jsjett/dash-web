@@ -1,8 +1,9 @@
 export interface NodeType {
-    type: String;
+    type: string;
     x: number;
     y: number;
-    title: String;
-    text?: String | null;
-    url?: String | null;
+    title: string;
+    zIndex: number;
+    text?: string | null;
+    url?: string | null;
 }

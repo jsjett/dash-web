@@ -5,6 +5,7 @@ import "./Main.scss";
 import stores from './stores/index';
 import  FreeFormCanvas from './views/freeformcanvas/FreeFormCanvas';
 import {NodeObject} from './stores/NodeObject'
+
 @inject("publicStore")
 @observer
 class Root extends React.Component<any, any>{
