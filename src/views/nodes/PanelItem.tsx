@@ -23,7 +23,9 @@ export default class VideoNodeView extends React.Component<IProps, any> {
                         {
                             node.type === 'text' ? (
                                 <div className="paragraph"
-                                     dangerouslySetInnerHTML={{__html:node.text}}
+                                     spellCheck="false"
+                                     contentEditable="true"
+                                     dangerouslySetInnerHTML={{__html:String(node.text)}}
                                     />
                             ) : (
                                 <video src={String(node.url)} controls/>
