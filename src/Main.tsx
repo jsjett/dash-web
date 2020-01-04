@@ -33,6 +33,14 @@ class Root extends React.Component<any, any>{
             }));
         }
 
+        this.props.publicStore.addNodes(new NodeObject({
+            type:'pdf',
+            x: Math.random() * maxX,
+            y: Math.random() * maxY,
+            title: "Pdf Node Title",
+            url:'/javascript.pdf'
+        }))
+
     }
 
     render(){

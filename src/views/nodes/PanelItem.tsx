@@ -82,15 +82,27 @@ export default class VideoNodeView extends React.Component<IProps, any> {
                                      contentEditable="true"
                                      dangerouslySetInnerHTML={{__html: String(node.text)}}
                                 />
-                            ) : (
+                            ) : null
+                        }
+                        {
+                            node.type === 'video'?(
                                 <video src={String(node.url)} controls/>
-                            )
+                            ):null
+                        }
+                        {
+                            node.type === 'pdf' ? (
+                                <iframe
+                                    src={`./pdfjs-2.2.228-dist/web/viewer.html?file=${String(node.url)}`}
+                                    width="100%"
+                                    height="100%"
+                                />
+                            ):null
                         }
                     </div>
                 </div>
                 <div className="scale"
-                     onMouseDown={this.onPointerDown}
-                ></div>
+                    onMouseDown={this.onPointerDown}
+                    />
             </div>
         );
     }
